@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option go_package = "genproto/booking";
+
+package booking;
+
+import "common2.proto";
+
+service ProviderService{
+    rpc Create(ProviderCreateReq) returns(Void);
+    rpc GetById(ById) returns(ProviderGetByIdRes);
+    rpc GetAll(ProviderGetAllReq) returns(ProviderGetAllRes);
+    rpc Update(ProviderUpdateReq) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+// - _id (ObjectId)
+// - user_id (UUID, Users jadvaliga havola)
+// - company_name (string)
+// - description (string)
+// - services (xizmat ID'lari massivi)
+// - availability (vaqt oraliqlar massivi)
+// - average_rating (float)
+// - location (GeoJSON point)
+// - created_at (timestamp)
+// - updated_at (timestamp)
+
+message ProviderRes{
+    string id = 1;
+    string user_id = 2;
+    string company_name = 3;
+    string description = 4;
+    repeated string services = 5;
+    string availability = 6;
+    float average_rating = 7;
+    string location = 8;
+}
+
+message ProviderCreateReq{
+    string user_id = 1;
+    string company_name = 2;
+    string description = 3;
+    repeated string services = 4;
+    string availability = 5;
+    float average_rating = 6;
+    string location = 7;
+}
+
+message ProviderGetByIdRes{
+    ProviderRes provider = 1;
+}
+
+message ProviderGetAllRes{
+    repeated ProviderRes providers = 1;
+}
+
+message ProviderUpdateReq{
+    string id = 1;
+    ProviderCreateReq provider = 2;
+}
+
+message ProviderGetAllReq{
+    float average_rating = 1;
+    Filter filter = 2;
+}
