@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option go_package = "genproto/booking";
+
+package booking;
+
+import "common2.proto";
+
+service BookingService{
+    rpc Create(BookingRes) returns(Void);
+    rpc GetById(ById) returns(BookingGetByIdRes);
+    rpc GetAll(BookingGetAllReq) returns(BookingGetAllRes);
+    rpc Update(BookingUpdateReq) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message BookingRes{
+    string id = 1;
+    string user_id = 2;
+    string provider_id = 3;
+    string service_id = 4;
+    string status = 5;
+    string scheduled_time = 6;
+    string location = 7;
+    int64 total_price = 8;
+}
+
+message BookingCreateReq{
+    string user_id = 1;
+    string provider_id = 2;
+    string service_id = 3;
+    string status = 4;
+    string scheduled_time = 5;
+    string location = 6;
+    int64 total_price = 7;
+}
+
+message BookingGetByIdRes{
+    BookingRes booking = 1;
+}
+
+message BookingGetAllRes{
+    repeated BookingRes bookings = 1;
+}
+
+message BookingUpdateReq{
+    string id = 1;
+    string status = 2;
+}
+
+message BookingGetAllReq{
+    string user_id = 1;
+    string provider_id = 2;
+    Filter filter = 3;
+}

@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "genproto/booking";
+
+package booking;
+
+import "common2.proto";
+
+service PaymentService{
+    rpc Create(PaymentRes) returns(Void);
+    rpc GetById(ById) returns(PaymentGetByIdRes);
+    rpc GetAll(PaymentGetAllReq) returns(PaymentGetAllRes);
+    rpc Update(PaymentUpdateReq) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message PaymentRes{
+    string id = 1;
+    string booking_id = 2;
+    int64 amount = 3;
+    string status = 4;
+    string payment_method = 5;
+    string user_id = 6;
+}
+
+message PaymentCreateReq{
+    string booking_id = 1;
+    int64 amount = 2;
+    string status = 3;
+    string payment_method = 4;
+    string user_id = 5;
+}
+
+message PaymentGetByIdRes{
+    PaymentRes payment = 1;
+}
+
+message PaymentGetAllRes{
+    repeated PaymentRes payments = 1;
+}
+
+message PaymentUpdateReq{
+    string id = 1;
+    string status = 2;
+
+}
+
+message PaymentGetAllReq{
+    string status = 1;
+    string user_id = 2;
+    Filter filter = 3;
+}

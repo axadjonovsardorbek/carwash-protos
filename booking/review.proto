@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "genproto/booking";
+
+package booking;
+
+import "common2.proto";
+
+service ReviewService{
+    rpc Create(ReviewRes) returns(Void);
+    rpc GetById(ById) returns(ReviewGetByIdRes);
+    rpc GetAll(ReviewGetAllReq) returns(ReviewGetAllRes);
+    rpc Update(ReviewUpdateReq) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message ReviewRes{
+    string id = 1;
+    string booking_id = 2;
+    string user_id = 3;
+    string provider_id = 4;
+    int32 rating = 5;
+    string comment = 6;
+}
+
+message ReviewCreateReq{
+    string booking_id = 1;
+    string user_id = 2;
+    string provider_id = 3;
+    int32 rating = 4;
+    string comment = 5;
+}
+
+message ReviewGetByIdRes{
+    ReviewRes review = 1;
+}
+
+message ReviewGetAllRes{
+    repeated ReviewRes reviews = 1;
+}
+
+message ReviewUpdateReq{
+    string id = 1;
+    int32 rating = 2;
+    string comment = 3;
+}
+
+message ReviewGetAllReq{
+    string user_id = 1;
+    string provider_id = 2;
+    Filter filter = 3;
+}
