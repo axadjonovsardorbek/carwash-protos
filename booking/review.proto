@@ -43,6 +43,7 @@ message ReviewUpdateReq{
     string id = 1;
     int32 rating = 2;
     string comment = 3;
+    string user_id = 4;
 }
 
 message ReviewGetAllReq{
