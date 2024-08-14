@@ -12,6 +12,7 @@ service ProviderService{
     rpc GetAll(ProviderGetAllReq) returns(ProviderGetAllRes);
     rpc Update(ProviderUpdateReq) returns(Void);
     rpc Delete(ById) returns(Void);
+    rpc GetProviderId(ById) returns(ById);
 }
 
 message ProviderRes{
