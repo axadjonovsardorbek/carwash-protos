@@ -12,6 +12,7 @@ service PaymentService{
     rpc GetAll(PaymentGetAllReq) returns(PaymentGetAllRes);
     rpc Update(PaymentUpdateReq) returns(Void);
     rpc Delete(ById) returns(Void);
+    rpc GetBookingId(ById) returns(ById);
 }
 
 message PaymentRes{
