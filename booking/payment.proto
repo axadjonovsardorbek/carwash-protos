@@ -13,6 +13,7 @@ service PaymentService{
     rpc Update(PaymentUpdateReq) returns(Void);
     rpc Delete(ById) returns(Void);
     rpc GetBookingId(ById) returns(ById);
+    rpc GetBookingAmount(ById) returns(GetAmountRes);
 }
 
 message PaymentRes{
@@ -50,4 +51,8 @@ message PaymentGetAllReq{
     string status = 1;
     string user_id = 2;
     Filter filter = 3;
+}
+
+message GetAmountRes{
+    int64 amount = 1;
 }
