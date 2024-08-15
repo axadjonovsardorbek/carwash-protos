@@ -12,6 +12,7 @@ service ReviewService{
     rpc GetAll(ReviewGetAllReq) returns(ReviewGetAllRes);
     rpc Update(ReviewUpdateReq) returns(Void);
     rpc Delete(ById) returns(Void);
+    rpc GetProviderRating(ById) returns(GetProviderRatingRes);
 }
 
 message ReviewRes{
@@ -50,4 +51,9 @@ message ReviewGetAllReq{
     string user_id = 1;
     string provider_id = 2;
     Filter filter = 3;
+}
+
+message GetProviderRatingRes{
+    int64 rating = 1;
+    int64 count = 2;
 }
