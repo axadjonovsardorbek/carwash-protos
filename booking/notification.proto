@@ -18,7 +18,8 @@ message NotificationRes{
     string user_id = 2;
     string message = 3;
     string is_read = 4;
-    string created_at = 5;
+    string email = 5;
+    string created_at = 6;
 }
 
 message NotificationCreateReq{
