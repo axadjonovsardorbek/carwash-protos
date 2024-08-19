@@ -12,6 +12,7 @@ service BookingService{
     rpc GetAll(BookingGetAllReq) returns(BookingGetAllRes);
     rpc Update(BookingUpdateReq) returns(Void);
     rpc Delete(ById) returns(Void);
+    rpc GetPopularService(ById) returns(GetPopularServiceRes);
 }
 
 message BookingRes{
@@ -52,4 +53,14 @@ message BookingGetAllReq{
     string user_id = 1;
     string provider_id = 2;
     Filter filter = 3;
+}
+
+message GetPopularServiceRes{
+    string provider_id = 1;
+    repeated CountPopularServices services = 2;
+}
+
+message CountPopularServices{
+    int32 count = 1;
+    string service_id = 2;
 }
