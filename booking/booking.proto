@@ -63,4 +63,7 @@ message GetPopularServiceRes{
 message CountPopularServices{
     int32 count = 1;
     string service_id = 2;
+    string name = 3;
+    int32 duration = 4;
+    int64 price = 5;
 }
